@@ -1,4 +1,9 @@
 const Filter = props => {
+    const handleFilterButton = event => {
+        event.preventDefault();
+        props.onFilterButton(event.target.value);
+    };
+
     return (
         <div className="row justify-content-end">
             <div
@@ -11,14 +16,29 @@ const Filter = props => {
                     role="group"
                     aria-label="Filter buttons"
                 >
-                    <button type="button" className="btn btn-secondary">
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        value="allButton"
+                        onClick={handleFilterButton}
+                    >
                         All
                     </button>
-                    <button type="button" className="btn btn-secondary">
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        value="activeButton"
+                        onClick={handleFilterButton}
+                    >
                         Active
                     </button>
-                    <button type="button" className="btn btn-secondary">
-                        Completed
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        value="completeButton"
+                        onClick={handleFilterButton}
+                    >
+                        Complete
                     </button>
                 </div>
                 <div className="input-group">

@@ -1,4 +1,14 @@
 const ToDoGrid = props => {
+    const listButtonFilter = props.toDoItems.filter(toDoItem => {
+        if (props.buttonFilter === 'activeButton') {
+            return toDoItem.completed === false;
+        }
+        if (props.buttonFilter === 'completeButton') {
+            return toDoItem.completed === true;
+        }
+        return toDoItem;
+    });
+
     return (
         <div>
             <div className="row" id="ToDoInput">
@@ -10,7 +20,7 @@ const ToDoGrid = props => {
                     aria-describedby="ToDoInput"
                 ></input>
             </div>
-            {props.toDoItems.map(toDoItems => {
+            {listButtonFilter.map(toDoItems => {
                 return (
                     <div key={toDoItems.id} className="row border">
                         <div className="form-check col-auto me-auto">
