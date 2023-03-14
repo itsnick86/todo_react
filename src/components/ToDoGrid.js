@@ -9,6 +9,15 @@ const ToDoGrid = props => {
         return toDoItem;
     });
 
+    const listSearchFilter = listButtonFilter.filter(toDoItem => {
+        if (props.searchFilter.length > 1) {
+            return toDoItem.title
+                .toLowerCase()
+                .includes(props.searchFilter.toLowerCase());
+        }
+        return toDoItem;
+    });
+
     return (
         <div>
             <div className="row" id="ToDoInput">
@@ -20,7 +29,7 @@ const ToDoGrid = props => {
                     aria-describedby="ToDoInput"
                 ></input>
             </div>
-            {listButtonFilter.map(toDoItems => {
+            {listSearchFilter.map(toDoItems => {
                 return (
                     <div key={toDoItems.id} className="row border">
                         <div className="form-check col-auto me-auto">

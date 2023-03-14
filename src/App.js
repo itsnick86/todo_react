@@ -7,6 +7,7 @@ import './App.css';
 
 function App() {
     const [filteredButton, setFilteredButton] = useState('allButton');
+    const [filteredSearch, setFilteredSearch] = useState('');
 
     const initToDoList = [
         { id: 1, title: 'Build Wireframe', completed: false },
@@ -18,11 +19,22 @@ function App() {
         setFilteredButton(value);
     };
 
+    const handleFilterSearch = value => {
+        setFilteredSearch(value);
+    };
+
     return (
         <div className="container">
             <h1 className="text-center">Things To Do</h1>
-            <Filter onFilterButton={handleFilterButton} />
-            <ToDoGrid toDoItems={initToDoList} buttonFilter={filteredButton} />
+            <Filter
+                onFilterButton={handleFilterButton}
+                onFilterSearch={handleFilterSearch}
+            />
+            <ToDoGrid
+                toDoItems={initToDoList}
+                buttonFilter={filteredButton}
+                searchFilter={filteredSearch}
+            />
         </div>
     );
 }

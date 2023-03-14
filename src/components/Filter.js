@@ -1,7 +1,12 @@
 const Filter = props => {
-    const handleFilterButton = event => {
-        event.preventDefault();
-        props.onFilterButton(event.target.value);
+    const handleFilterButton = e => {
+        e.preventDefault();
+        props.onFilterButton(e.target.value);
+    };
+
+    const handleFilterSearch = e => {
+        e.preventDefault();
+        props.onFilterSearch(e.target.value);
     };
 
     return (
@@ -51,6 +56,7 @@ const Filter = props => {
                         placeholder="Search..."
                         aria-label="Input search filter"
                         aria-describedby="SearchFilter"
+                        onChange={handleFilterSearch}
                     ></input>
                 </div>
             </div>
