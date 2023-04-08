@@ -37,6 +37,11 @@
     }
 }
 
+/* My CSS */
 .container {
     max-width: 900px !important;
+}
+
+.completed {
+    text-decoration: line-through;
 }
