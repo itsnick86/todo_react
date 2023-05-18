@@ -7,9 +7,14 @@ import './App.css';
 
 function App() {
     const initToDoList = [
-        { id: 1, title: 'Build Wireframe', completed: false },
-        { id: 2, title: 'Map Out Components', completed: false },
-        { id: 3, title: 'Build The App', completed: true },
+        { id: 1, title: 'Build Wireframe', completed: false, isDisabled: true },
+        {
+            id: 2,
+            title: 'Map Out Components',
+            completed: false,
+            isDisabled: true,
+        },
+        { id: 3, title: 'Build The App', completed: true, isDisabled: true },
     ];
 
     const [filteredButton, setFilteredButton] = useState('allButton');
@@ -53,6 +58,7 @@ function App() {
                         id: Math.floor(Math.random() * 10000),
                         title: newToDoValue,
                         completed: false,
+                        isDisabled: true,
                     },
                 ];
             });
@@ -63,6 +69,22 @@ function App() {
     const handleDeleteToDo = toDoId => {
         setToDoList(prevToDoList =>
             prevToDoList.filter(toDo => toDo.id.toString() !== toDoId)
+        );
+    };
+
+    const handleEditToDo = (toDoId, toDoTitle) => {
+        setToDoList(prevToDoList =>
+            prevToDoList.map(toDo => {
+                if (toDo.id.toString() === toDoId) {
+                    return {
+                        ...toDo,
+                        title: toDoTitle,
+                        isDisabled: !toDo.isDisabled,
+                    };
+                } else {
+                    return toDo;
+                }
+            })
         );
     };
 
@@ -82,6 +104,7 @@ function App() {
                 addToDo={handleAddToDo}
                 deleteToDo={handleDeleteToDo}
                 setCompletedCheck={handleCompletedCheck}
+                editToDo={handleEditToDo}
             />
         </div>
     );

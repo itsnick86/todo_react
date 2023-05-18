@@ -28,12 +28,12 @@ const ToDoGrid = props => {
         props.setCompletedCheck(e.target.value);
     };
 
-    const handleAddToDo = () => {
-        props.addToDo();
-    };
-
     const handleNewToDoValue = e => {
         props.newToDoSetValue(e.target.value);
+    };
+
+    const handleAddToDo = () => {
+        props.addToDo();
     };
 
     const handleModalToDoId = e => {
@@ -44,7 +44,12 @@ const ToDoGrid = props => {
         props.deleteToDo(toDoId);
     };
 
-    const handleEditToDo = () => {};
+    const handleEditToDo = e => {
+        props.editToDo(
+            e.target.parentNode.getAttribute('id'),
+            document.getElementById('InputValue').value
+        );
+    };
 
     return (
         <>
@@ -81,21 +86,25 @@ const ToDoGrid = props => {
                                 ></input>
                             </div>
                             <input
+                                id="InputValue"
                                 type="text"
                                 className={`form-control ${
                                     toDoItems.completed && 'completed'
                                 }`}
                                 aria-label="Text input with checkbox"
-                                placeholder={toDoItems.title}
-                                disabled
-                                // disabled={toDoItems.disabled}
+                                disabled={toDoItems.isDisabled}
+                                defaultValue={toDoItems.title}
                             ></input>
                             <button
                                 type="button"
-                                className="btn btn-outline-warning"
+                                className={`btn btn-${
+                                    toDoItems.isDisabled
+                                        ? 'outline-warning'
+                                        : 'success'
+                                }`}
                                 onClick={handleEditToDo}
                             >
-                                Edit
+                                {toDoItems.isDisabled ? 'Edit' : 'Done'}
                             </button>
                             <button
                                 type="button"
