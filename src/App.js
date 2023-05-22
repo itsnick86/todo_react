@@ -17,7 +17,7 @@ function App() {
         { id: 3, title: 'Build The App', completed: true, isDisabled: true },
     ];
 
-    const [filteredButton, setFilteredButton] = useState('allButton');
+    const [filteredButton, setFilteredButton] = useState('');
     const [filteredSearch, setFilteredSearch] = useState('');
     const [newToDoValue, setNewToDoValue] = useState('');
     const [toDoList, setToDoList] = useState(initToDoList);
