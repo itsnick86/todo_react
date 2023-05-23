@@ -53,7 +53,7 @@ const ToDoGrid = props => {
 
     return (
         <>
-            <div className="input-group mb-1">
+            <div className="input-group mb-2">
                 <input
                     type="text"
                     className="form-control"

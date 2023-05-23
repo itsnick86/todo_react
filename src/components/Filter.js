@@ -16,7 +16,7 @@ const Filter = props => {
     };
 
     return (
-        <div className="row justify-content-end">
+        <div className="row justify-content-end mt-3 mb-3">
             <div
                 className="btn-toolbar col-auto"
                 role="toolbar"
